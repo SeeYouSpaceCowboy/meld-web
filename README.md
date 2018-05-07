@@ -38,6 +38,12 @@ Open terminal and run the following lines of code to clone and run this project.
  ```
  This project should now be running locally on port `3000`.
 
+### Installing the Back-end
+Meld consists of a front-end and a back-end. For this project to run you have to have both projects installed and running locally at the same time.
+
+If haven't already, you should now clone and install the back-end of this project; instructions [here](https://github.com/SeeYouSpaceCowboy/meld-api.git).
+
+
 ## Built With
 * [ReactJs](https://reactjs.org/) - JavaScript Framework.
 
