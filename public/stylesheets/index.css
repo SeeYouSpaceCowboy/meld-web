@@ -1,0 +1,36 @@
+* {
+  box-sizing: content-box;
+  margin-left: 0;
+  margin-right: 0;
+  color: #2A3641;
+  font-family: -apple-system, 'Hind', helvetica, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a, p {
+  font-size: 14px;
+  line-height: 23px;
+}
+
+a {
+  color: #888;
+}
+
+input {
+  border: 0;
+  border-bottom: solid 1px #2A3641;
+  margin-left: 0.5%;
+  margin-right: 0.5%;
+  padding: 1em;
+  font-size: 14px;
+  outline: none;
+}
+
+button {
+  border: none;
+  padding: 1em 2em;
+  color: #fff;
+  font-size: 14px;
+  background-color: #2A3641;
+}

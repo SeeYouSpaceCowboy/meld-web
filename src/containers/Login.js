@@ -4,13 +4,15 @@ class Login extends Component {
   render() {
     return (
       <div>
+        <h1>Welcome Back</h1>
+
         <input type='text' placeholder='username'/>
         <input type='password' placeholder='password'/>
-        <p>Dont have an account? <a href='#'>Sign Up</a></p>
+        <p>Dont have an account? <a href='/signup'>Sign Up</a></p>
 
         <button>Login</button>
 
-        <a href='#'>Forgot your password?</a>
+        <a href='/forgot-password'>Forgot your password?</a>
       </div>
     )
   }
