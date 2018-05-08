@@ -1,0 +1,24 @@
+.login {
+  position: absolute;
+  margin: auto;
+  top: 10%;
+  right: 0;
+  left: 0;
+  width: 40%;
+  text-align: center;
+}
+
+.login > * {
+  display: block;
+  margin: 0 auto;
+  margin-top: 2em;
+}
+
+.login > h1 {
+  margin-bottom: 2em;
+}
+
+.login > button,
+.login > input {
+  width: 50%;
+}
