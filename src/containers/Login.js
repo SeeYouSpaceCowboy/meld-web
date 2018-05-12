@@ -9,11 +9,11 @@ class Login extends Component {
 
         <input type='text' placeholder='username'/>
         <input type='password' placeholder='password'/>
-        <p>Dont have an account? <a href='/signup'>Sign Up</a></p>
+        <p>Dont have an account? <Link to='/signup'>Sign Up</Link></p>
 
         <button>Login</button>
 
-        <a href='/forgot-password'>Forgot your password?</a>
+        <Link to='/forgot-password'>Forgot your password?</Link>
       </div>
     )
   }
