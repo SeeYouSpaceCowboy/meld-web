@@ -1,4 +1,4 @@
-import { CONST } from '../const'
+import { CONST } from '../constants'
 import { userAdapter } from '../adapters/userAdapter'
 
 export const fetchUser = () => {
