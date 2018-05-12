@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { CONST } from '../constants'
+import { CONST } from '../common/constants'
 
 axios.defaults.baseURL = CONST.URL
 axios.defaults.headers.common['AUTHORIZATION'] = sessionStorage.getItem('jwt')
