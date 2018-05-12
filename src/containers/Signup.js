@@ -12,7 +12,7 @@ class Signup extends Component {
         <input type='text' placeholder='lastname'/>
         <input type='password' placeholder='password'/>
         <input type='password' placeholder='password confirmation'/>
-        <p>Already have an account? <Link href='/login'>Log In</Link></p>
+        <p>Already have an account? <a href='/login'>Log In</a></p>
 
         <button>Sign Up</button>
 

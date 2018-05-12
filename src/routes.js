@@ -8,9 +8,11 @@ export default (
   <BrowserRouter>
     <div>
       <Switch>
-        <Route path='/signup' component={ Signup }/>
-        <Route path='/login' component={ Login }/>
-        <Route path='/' component={ Login }/>
+        <Route path='/signup' component={ Signup } render={ () => autoHome() }/>
+        <Route path='/login' component={ Login } render={ () => autoHome() }/>
+        <Route path='/chats' component={ Login } render={ () => requireAuth() }/>
+        <Route path='/logout' render={ () => logout() }/>
+        <Route path='/' component={ Login} render={ () => requireAuth() }/>
       </Switch>
     </div>
   </BrowserRouter>

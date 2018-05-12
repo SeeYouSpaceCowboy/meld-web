@@ -9,7 +9,7 @@ class Login extends Component {
 
         <input type='text' placeholder='username'/>
         <input type='password' placeholder='password'/>
-        <p>Dont have an account? <Link href='/signup'>Sign Up</Link></p>
+        <p>Dont have an account? <a href='/signup'>Sign Up</a></p>
 
         <button>Login</button>
 
