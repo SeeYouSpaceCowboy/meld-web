@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
 
 class Signup extends Component {
   render() {
@@ -11,11 +12,11 @@ class Signup extends Component {
         <input type='text' placeholder='lastname'/>
         <input type='password' placeholder='password'/>
         <input type='password' placeholder='password confirmation'/>
-        <p>Already have an account? <a href='/login'>Log In</a></p>
+        <p>Already have an account? <Link to='/login'>Log In</Link></p>
 
         <button>Sign Up</button>
 
-        <p>By signing up, you agree to the <a href='/terms-&-conditions'>terms & conditions</a></p>
+        <p>By signing up, you agree to the <Link to='/terms-&-conditions'>terms & conditions</Link></p>
       </div>
     )
   }
