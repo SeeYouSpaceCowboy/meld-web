@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 
-import Signup from './containers/Signup'
+import routes from './routes'
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <Signup/>
+        { routes }
       </div>
     );
   }

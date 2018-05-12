@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
 
 class Signup extends Component {
   render() {
@@ -11,7 +12,7 @@ class Signup extends Component {
         <input type='text' placeholder='lastname'/>
         <input type='password' placeholder='password'/>
         <input type='password' placeholder='password confirmation'/>
-        <p>Already have an account? <a href='/login'>Log In</a></p>
+        <p>Already have an account? <Link href='/login'>Log In</Link></p>
 
         <button>Sign Up</button>
 
