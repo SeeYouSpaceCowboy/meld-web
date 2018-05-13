@@ -9,26 +9,20 @@ export default (
   <BrowserRouter>
     <div>
       <Switch>
-        <Route path='/signup' component={ Signup }/>
-        <Route path='/login' render={ () => loggedIn(<Redirect to="/chats"/>) }/>
-        <Route path='/chats' render={ () => loggedIn(<ChatContainer/>) }/>
-        <Route path='/logout' render={ () => logout() }/>
-        <Route path='/' render={ loggedIn(<ChatContainer/>) }/>
+        <Route path='/signup' render={ () => loggedIn ? <Redirect to="/chats"/> : <Signup/> }/>
+        <Route path='/login' render={ () => loggedIn ? <Redirect to="/chats"/> : <Login/> }/>
+        <Route path='/chats' render={ () => loggedIn ? <ChatContainer/> : <Redirect to="/login"/> }/>
+        <Route path='/logout' render={ () => logout() ? <Redirect to="/login"/> : null }/>
+        <Route path='/' render={ () => loggedIn ? <ChatContainer/> : <Redirect to="/login"/> }/>
       </Switch>
     </div>
   </BrowserRouter>
 )
 
-function loggedIn(component) {
-  if(sessionStorage['jwt']) return component
-
-  return <Login/>
-}
+const loggedIn = !!sessionStorage['jwt']
 
 function logout() {
-  if(sessionStorage['jwt']) {
-    sessionStorage.removeItem('jwt')
-  }
+  if(sessionStorage['jwt']) sessionStorage.removeItem('jwt')
 
-  return <Redirect to='/login'/>
+  return !sessionStorage['jwt']
 }

@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import { Link, Redirect } from 'react-router-dom'
+import { Link, withRouter } from 'react-router-dom'
 
 import { login } from '../actions/userActions'
 
@@ -28,6 +28,7 @@ class Login extends Component {
 
   onClick(e) {
     this.props.login({ user: this.state })
+    this.props.history.push('/')
   }
 
   render() {
@@ -53,4 +54,4 @@ const mapDispatchToProps = dispatch => {
   }, dispatch)
 }
 
-export default connect(null, mapDispatchToProps)(Login)
+export default connect(null, mapDispatchToProps)(withRouter(Login))
