@@ -22,7 +22,7 @@ export default (
 function loggedIn(component) {
   if(sessionStorage['jwt']) return component
 
-  return <Login/>
+  return <Redirect to='/login'/>
 }
 
 function logout() {
@@ -30,5 +30,5 @@ function logout() {
     sessionStorage.removeItem('jwt')
   }
 
-  return <Login/>
+  return <Redirect to='/login'/>
 }
