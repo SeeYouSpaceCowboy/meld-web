@@ -22,7 +22,7 @@ export default (
 function loggedIn(component) {
   if(sessionStorage['jwt']) return component
 
-  return <Redirect to='/login'/>
+  return <Login/>
 }
 
 function logout() {
