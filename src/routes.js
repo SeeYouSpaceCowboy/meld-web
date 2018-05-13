@@ -30,5 +30,5 @@ function logout() {
     sessionStorage.removeItem('jwt')
   }
 
-  <Login/>
+  return <Login/>
 }
