@@ -1,10 +1,12 @@
 import React from 'react'
-import { Link, withRouter } from 'react-router-dom'
+
+import ChatList from './ChatList'
+import ChatMessages from './ChatMessages'
 
 const ChatContainer = () =>
-  <div>
-    <p>Chats Container</p>
-    <Link to='/logout'>Logout</Link>
+  <div className='chat-container'>
+    <ChatList/>
+    <ChatMessages/>
   </div>
 
-export default (withRouter(ChatContainer))
+export default ChatContainer

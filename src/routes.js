@@ -7,7 +7,7 @@ import ChatContainer from './containers/ChatContainer'
 
 export default (
   <BrowserRouter>
-    <div>
+    <div id='routes'>
       <Switch>
         <Route path='/signup' render={ () => loggedIn ? <Redirect to="/chats"/> : <Signup/> }/>
         <Route path='/login' render={ () => loggedIn ? <Redirect to="/chats"/> : <Login/> }/>
