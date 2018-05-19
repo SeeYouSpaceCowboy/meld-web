@@ -12,7 +12,7 @@ export default (
         <Route path='/signup' render={ () => loggedIn ? <Redirect to="/chats"/> : <Signup/> }/>
         <Route path='/login' render={ () => loggedIn ? <Redirect to="/chats"/> : <Login/> }/>
         <Route path='/chats' render={ () => loggedIn ? <ChatContainer/> : <Redirect to="/login"/> }/>
-        <Route path='/logout' render={ () => logout() ? <Redirect to="/login"/> : null }/>
+        <Route path='/logout' render={ (params) => logout(params) }/>
         <Route path='/' render={ () => loggedIn ? <ChatContainer/> : <Redirect to="/login"/> }/>
       </Switch>
     </div>
@@ -21,8 +21,8 @@ export default (
 
 const loggedIn = !!sessionStorage['jwt']
 
-function logout() {
+function logout(params) {
   if(sessionStorage['jwt']) sessionStorage.removeItem('jwt')
 
-  return !sessionStorage['jwt']
+  return <Redirect to="/login"/>
 }

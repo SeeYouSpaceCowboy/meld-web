@@ -1,8 +1,10 @@
 import React from 'react'
+import { Link, withRouter } from 'react-router-dom'
 
 const ChatContainer = () =>
   <div>
-    Chat Container!
+    <p>Chats Container</p>
+    <Link to='/logout'>Logout</Link>
   </div>
 
-export default ChatContainer
+export default (withRouter(ChatContainer))
