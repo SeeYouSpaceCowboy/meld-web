@@ -1,10 +1,44 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
+import { bindActionCreators } from 'redux'
+import { connect } from 'react-redux'
+import { Link, withRouter } from 'react-router-dom'
+
+import { signup } from '../actions/userActions'
 
 class Signup extends Component {
+  constructor() {
+    super()
+
+    this.state = {
+      username: '',
+      firstname: '',
+      lastname: '',
+      password: '',
+      password_confirmation: ''
+    }
+
+    this.onChange = this.onChange.bind(this)
+    this.handleSubmit = this.handleSubmit.bind(this)
+  }
+
+  onChange(e) {
+    let state = this.state
+    let field = e.target.name
+
+    state[field] = e.target.value
+    this.setState({ state })
+  }
+
+  handleSubmit(e) {
+    e.preventDefault()
+
+    this.props.login({ user: this.state })
+    this.props.history.push('/')
+  }
+
   render() {
     return (
-      <div className='signup'>
+      <form className='signup' onSubmit={ this.handleSubmit }>
         <h1>Join Us</h1>
 
         <input type='text' placeholder='username'/>
@@ -14,12 +48,18 @@ class Signup extends Component {
         <input type='password' placeholder='password confirmation'/>
         <p>Already have an account? <Link to='/login'>Log In</Link></p>
 
-        <button>Sign Up</button>
+        <button type='submit'>Sign Up</button>
 
         <p>By signing up, you agree to the <Link to='/terms-&-conditions'>terms & conditions</Link></p>
-      </div>
+      </form>
     )
   }
 }
 
-export default Signup
+const mapDispatchToProps = dispatch => {
+  return bindActionCreators({
+    signup: signup
+  }, dispatch)
+}
+
+export default connect(null, null)(withRouter(Signup))

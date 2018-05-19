@@ -3,35 +3,26 @@ import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom'
 
 import Login from './containers/Login'
 import Signup from './containers/Signup'
+import ChatContainer from './containers/ChatContainer'
 
 export default (
   <BrowserRouter>
     <div>
       <Switch>
-        <Route path='/signup' component={ Signup } render={ () => autoHome() }/>
-        <Route path='/login' component={ Login } render={ () => autoHome() }/>
-        <Route path='/chats' component={ Login } render={ () => requireAuth() }/>
-        <Route path='/logout' render={ () => logout() }/>
-        <Route path='/' component={ Login} render={ () => requireAuth() }/>
+        <Route path='/signup' render={ () => loggedIn ? <Redirect to="/chats"/> : <Signup/> }/>
+        <Route path='/login' render={ () => loggedIn ? <Redirect to="/chats"/> : <Login/> }/>
+        <Route path='/chats' render={ () => loggedIn ? <ChatContainer/> : <Redirect to="/login"/> }/>
+        <Route path='/logout' render={ (params) => logout(params) }/>
+        <Route path='/' render={ () => loggedIn ? <ChatContainer/> : <Redirect to="/login"/> }/>
       </Switch>
     </div>
   </BrowserRouter>
 )
 
+const loggedIn = !!sessionStorage['jwt']
 
+function logout(params) {
+  if(sessionStorage['jwt']) sessionStorage.removeItem('jwt')
 
-function requireAuth() {
-  if(!sessionStorage['jwt']) <Redirect to="/login"/>
-}
-
-function logout() {
-  if(sessionStorage['jwt']) {
-    sessionStorage.removeItem('jwt')
-  }
-
-  <Redirect to="/login"/>
-}
-
-function autoHome() {
-  if(sessionStorage['jwt']) <Redirect to="/login"/>
+  return <Redirect to="/login"/>
 }
