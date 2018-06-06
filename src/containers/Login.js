@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import { Link, withRouter } from 'react-router-dom'
+import PropTypes from 'prop-types'
 
 import { login } from '../actions/userActions'
 
@@ -48,6 +49,11 @@ class Login extends Component {
       </form>
     )
   }
+}
+
+Login.propTypes = {
+  history: PropTypes.object,
+  login: PropTypes.func
 }
 
 const mapDispatchToProps = dispatch => {
