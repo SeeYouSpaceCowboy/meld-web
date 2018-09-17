@@ -47,9 +47,16 @@ class ChatMessages extends Component {
       { user: { id: 1 }, content: 'No way! When were you going to tell me about your roof??' },
     ]
 
+    let lastType = null
     return messages.map((message, i) => {
       let type = message.user.id === 1 ? "sender" : "receiver"
-      return <Message key={ i } type={ type } message={ message.content }/>
+
+      if(lastType !== type) {
+        lastType = type
+        return <Message key={ i } type={ type } message={ message.content } icon="message-user-shift"/>
+      } else {
+        return <Message key={ i } type={ type } message={ message.content } icon=""/>
+      }
     })
   }
 }

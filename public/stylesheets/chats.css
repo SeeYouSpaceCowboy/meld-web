@@ -31,28 +31,36 @@
 
 .message {
   height: auto;
-  padding: 1em 1.5em;
+  padding: 0.15em 1.5em;
   word-wrap: break-word;
   clear: both;
 }
 
 .message > p {
   font-size: 1.25em;
-  line-height: 1.1em;
+  line-height: 1.2em;
 }
 
 .sender {
-  float: left;
-  margin-right: 15%;
+  /* float: left;
+  margin-right: 15%; */
 }
 
 .sender > p {
-  color: #9e9e9e;
+  color: #7e7e7e;
 }
 
 .receiver {
-  float: right;
-  margin-left: 15%;
+  /* float: right;
+  margin-left: 15%; */
+}
+
+.receiver > p {
+  color: #222;
+}
+
+.message-user-shift {
+  margin-top: 3em;
 }
 
 .message-input {

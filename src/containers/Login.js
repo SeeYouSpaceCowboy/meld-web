@@ -31,7 +31,7 @@ class Login extends Component {
     e.preventDefault()
 
     this.props.login({ user: this.state })
-    this.props.history.push('/')
+    this.props.history.push('/chats')
   }
 
   render() {
@@ -52,7 +52,7 @@ class Login extends Component {
 }
 
 Login.propTypes = {
-  history: PropTypes.object,
+  history: PropTypes.object.isRequired,
   login: PropTypes.func
 }
 
@@ -62,4 +62,5 @@ const mapDispatchToProps = dispatch => {
   }, dispatch)
 }
 
-export default connect(null, mapDispatchToProps)(withRouter(Login))
+//export default withRouter(Login)
+export default withRouter(connect(null, mapDispatchToProps)(Login))
