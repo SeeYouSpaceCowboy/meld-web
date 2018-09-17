@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import { Link, withRouter } from 'react-router-dom'
+import PropTypes from 'prop-types'
 
 import { signup } from '../actions/userActions'
 
@@ -56,10 +57,16 @@ class Signup extends Component {
   }
 }
 
+Signup.propTypes = {
+  history: PropTypes.object,
+  login: PropTypes.func,
+  signup: PropTypes.func
+}
+
 const mapDispatchToProps = dispatch => {
   return bindActionCreators({
     signup: signup
   }, dispatch)
 }
 
-export default connect(null, null)(withRouter(Signup))
+export default connect(null, mapDispatchToProps)(withRouter(Signup))

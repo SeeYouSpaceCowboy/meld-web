@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import { Link, withRouter } from 'react-router-dom'
+import PropTypes from 'prop-types'
 
 import { login } from '../actions/userActions'
 
@@ -30,7 +31,7 @@ class Login extends Component {
     e.preventDefault()
 
     this.props.login({ user: this.state })
-    this.props.history.push('/')
+    this.props.history.push('/chats')
   }
 
   render() {
@@ -50,10 +51,16 @@ class Login extends Component {
   }
 }
 
+Login.propTypes = {
+  history: PropTypes.object.isRequired,
+  login: PropTypes.func
+}
+
 const mapDispatchToProps = dispatch => {
   return bindActionCreators({
     login: login
   }, dispatch)
 }
 
-export default connect(null, mapDispatchToProps)(withRouter(Login))
+//export default withRouter(Login)
+export default withRouter(connect(null, mapDispatchToProps)(Login))
