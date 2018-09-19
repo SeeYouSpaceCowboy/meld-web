@@ -30,8 +30,7 @@ class Login extends Component {
   handleSubmit(e) {
     e.preventDefault()
 
-    this.props.login({ user: this.state })
-    this.props.history.push('/chats')
+    this.props.login({ user: this.state }, () => this.props.history.push('/chats'))
   }
 
   render() {
@@ -58,7 +57,7 @@ Login.propTypes = {
 
 const mapDispatchToProps = dispatch => {
   return bindActionCreators({
-    login: login
+    login
   }, dispatch)
 }
 

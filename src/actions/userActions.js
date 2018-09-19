@@ -10,8 +10,9 @@ export const fetchUser = () => {
   }
 }
 
-export const login = credentionals => {
+export const login = (credentionals, callback) => {
   const response = userAdapter.login(credentionals)
+  response.then(() => callback())
 
   return {
     type: CONST.LOGIN_OR_SIGNUP,

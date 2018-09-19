@@ -11,7 +11,7 @@ export const userAdapter = {
       .catch(error => error)
   },
 
-  login: credentionals => {
+  login: (credentionals) => {
     return axios.post('login', credentionals)
       .then(response => {
         sessionStorage.setItem('jwt', response.data.jwt)
