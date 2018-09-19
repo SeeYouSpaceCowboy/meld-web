@@ -21,6 +21,7 @@
   width: 75%;
   height: 100%;
   position: relative;
+  background-color: #F6F6F6;
 }
 
 .message-wrapper {
@@ -42,8 +43,8 @@
 }
 
 .sender {
-  /* float: left;
-  margin-right: 15%; */
+  float: left;
+  margin-right: 10%;
 }
 
 .sender > p {
@@ -51,8 +52,8 @@
 }
 
 .receiver {
-  /* float: right;
-  margin-left: 15%; */
+  float: right;
+  margin-left: 10%;
 }
 
 .receiver > p {
