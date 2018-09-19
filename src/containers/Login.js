@@ -1,45 +1,47 @@
 import React, { Component } from 'react'
 import { bindActionCreators } from 'redux'
+import { Field, reduxForm } from 'redux-form'
 import { connect } from 'react-redux'
 import { Link, withRouter } from 'react-router-dom'
 import PropTypes from 'prop-types'
 
 import { login } from '../actions/userActions'
+import Input from '../components/redux-form/Input'
 
 class Login extends Component {
   constructor() {
     super()
 
-    this.state = {
-      username: '',
-      password: ''
-    }
-
-    this.onChange = this.onChange.bind(this)
-    this.handleSubmit = this.handleSubmit.bind(this)
+    this.renderField = this.renderField.bind(this)
+    this.onSubmit = this.onSubmit.bind(this)
   }
 
-  onChange(e) {
-    let state = this.state
-    let field = e.target.name
-
-    state[field] = e.target.value
-    this.setState({ state })
+  renderField(field) {
+    return <Input field={ field }/>
   }
 
-  handleSubmit(e) {
-    e.preventDefault()
-
-    this.props.login({ user: this.state }, () => this.props.history.push('/chats'))
+  onSubmit(values) {
+    this.props.login({ user: values }, () => this.props.history.push('/chats'))
   }
 
   render() {
+    const { handleSubmit } = this.props
+
     return (
-      <form className='login' onSubmit={ this.handleSubmit }>
+      <form className='login' onSubmit={ handleSubmit(this.onSubmit) }>
         <h1>Welcome Back</h1>
 
-        <input type='text' onChange={ this.onChange } name='username' placeholder='username' value={ this.state.username }/>
-        <input type='password' onChange={ this.onChange } name='password' placeholder='password' value={ this.state.password }/>
+        <Field
+          placeholder="username"
+          name='username'
+          component={ this.renderField }
+        />
+        <Field
+          placeholder="password"
+          name='password'
+          component={ this.renderField }
+        />
+
         <p>Dont have an account? <Link to='/signup'>Sign Up</Link></p>
 
         <button type="submit">Login</button>
@@ -51,8 +53,18 @@ class Login extends Component {
 }
 
 Login.propTypes = {
+  handleSubmit: PropTypes.func.isRequired,
   history: PropTypes.object.isRequired,
   login: PropTypes.func
+}
+
+function validate(values) {
+  const errors = {}
+
+  if(!values.username) errors.username = "Enter a username"
+  if(!values.password) errors.password = "Enter a password"
+
+  return errors
 }
 
 const mapDispatchToProps = dispatch => {
@@ -61,5 +73,7 @@ const mapDispatchToProps = dispatch => {
   }, dispatch)
 }
 
-//export default withRouter(Login)
-export default withRouter(connect(null, mapDispatchToProps)(Login))
+export default reduxForm({
+  validate,
+  form: 'PostsLoginForm'
+})(withRouter(connect(null, mapDispatchToProps)(Login)))
