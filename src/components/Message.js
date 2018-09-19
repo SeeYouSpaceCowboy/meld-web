@@ -9,7 +9,7 @@ const Message = ({ type, message, icon }) =>
 Message.propTypes = {
   type: PropTypes.string,
   message: PropTypes.string,
-  icon: PropTypes.bool
+  icon: PropTypes.string
 }
 
 export default Message
