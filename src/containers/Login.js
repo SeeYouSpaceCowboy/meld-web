@@ -16,9 +16,7 @@ class Login extends Component {
     this.onSubmit = this.onSubmit.bind(this)
   }
 
-  renderField(field) {
-    return <Input field={ field }/>
-  }
+  renderField(field) { return <Input field={ field }/> }
 
   onSubmit(values) {
     this.props.login({ user: values }, () => this.props.history.push('/chats'))
@@ -32,11 +30,13 @@ class Login extends Component {
         <h1>Welcome Back</h1>
 
         <Field
+          type="text"
           placeholder="username"
           name='username'
           component={ this.renderField }
         />
         <Field
+          type="password"
           placeholder="password"
           name='password'
           component={ this.renderField }

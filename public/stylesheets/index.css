@@ -40,6 +40,14 @@ input {
   outline: none;
 }
 
+.invalid-input {
+  border-color: red;
+}
+
+.invalid-text {
+  color: red;
+}
+
 button {
   border: none;
   padding: 1em 2em;

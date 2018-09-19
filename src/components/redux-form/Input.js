@@ -2,15 +2,21 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 const Input = ({ field }) => {
-  const { placeholder, meta: { error } } = field
+  const { type, placeholder, meta: { touched, error } } = field
+
+  const className = `${ touched && error ? 'invalid-input' : '' }`
 
   return (
     <div>
       <input
+        className={ className }
+        type={ type }
         placeholder={ placeholder }
         { ...field.input }
       />
-      { error }
+      <div className="invalid-text">
+        { touched ? error : '' }
+      </div>
     </div>
   )
 }
